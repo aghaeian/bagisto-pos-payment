@@ -1,5 +1,5 @@
 {
-    "name": "webkul/pos-payment",
+    "name": "aghaeian/bagisto-pos-payment",
     "description": "POS Ödeme Yöntemi - Tüm bankalar için destek",
     "type": "bagisto-package",
     "require": {
@@ -9,13 +9,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Webkul\\POSPayment\\": "src/"
+            "Aghaeian\\POSPayment\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Webkul\\POSPayment\\Providers\\POSPaymentServiceProvider"
+                "Aghaeian\\POSPayment\\Providers\\POSPaymentServiceProvider"
             ]
         }
     },
