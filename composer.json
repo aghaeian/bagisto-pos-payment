@@ -1,1 +1,31 @@
 
+{
+    "name": "webkul/pos-payment",
+    "description": "POS Ödeme Yöntemi - Tüm bankalar için destek",
+    "type": "bagisto-package",
+    "require": {
+        "php": "^8.1",
+        "bagisto/bagisto": "2.2.*",
+        "brotzka/laravel-dotenv-editor": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\POSPayment\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\POSPayment\\Providers\\POSPaymentServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan pospayment:install"
+        ],
+        "post-update-cmd": [
+            "@php artisan pospayment:install"
+        ]
+    }
+}
