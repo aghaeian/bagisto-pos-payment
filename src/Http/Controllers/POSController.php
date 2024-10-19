@@ -1,4 +1,4 @@
-namespace Webkul\POSPayment\Http\Controllers;
+namespace Aghaeian\POSPayment\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
