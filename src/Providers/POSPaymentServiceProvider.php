@@ -3,44 +3,51 @@
 namespace Aghaeian\POSPayment\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Aghaeian\POSPayment\Console\Commands\InstallPOSPayment;
+use Webkul\Payment\Payment;
 
 class POSPaymentServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
     public function register()
     {
-        // Merge configuration from the package into the application's config
         $this->mergeConfigFrom(
             __DIR__ . '/../Config/config.php', 'pospayment'
         );
 
-        // Register console commands
-        $this->commands([
-            InstallPOSPayment::class,
-        ]);
+        $this->registerPaymentMethods();
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
-        // Load routes from the package
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
-
-        // Load views from the package
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views', 'pospayment');
+    }
 
-        // Publish configuration files to allow the application to override them
-        $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('pospayment.php'),
-        ], 'config');
+    /**
+     * Register custom payment methods.
+     *
+     * @return void
+     */
+    protected function registerPaymentMethods()
+    {
+        app()->register(function () {
+            return [
+                'code' => 'pospayment',
+                'title' => 'POS Payment Method',
+                'description' => 'Supports multiple Turkish banks',
+                'class' => 'Aghaeian\POSPayment\Payment\POSPayment',
+                'active' => true,
+                'sort' => 1,
+            ];
+        });
     }
 }
