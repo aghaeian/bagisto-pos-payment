@@ -6,11 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class POSPaymentServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
         // Merge the custom configuration into the application's config
@@ -19,22 +14,22 @@ class POSPaymentServiceProvider extends ServiceProvider
         );
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        // Load the routes for the payment processing
+        // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
 
-        // Load the views for the payment method
+        // Load views
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views', 'bagistopospayment');
 
-        // Publish the configuration to allow users to override it
+        // Publish configuration to allow users to override it
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path('bagistopospayment.php'),
+        ], 'config');
+
+        // Publish system config for admin visibility
+        $this->publishes([
+            __DIR__ . '/../Config/system.php' => config_path('system.php'),
         ], 'config');
     }
 }
