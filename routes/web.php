@@ -1,3 +1,5 @@
+<?php
+
 use Aghaeian\POSPayment\Http\Controllers\POSController;
 
 Route::prefix('pos-payment')->group(function () {
