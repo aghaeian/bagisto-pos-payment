@@ -3,7 +3,6 @@
 namespace Aghaeian\POSPayment\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Aghaeian\POSPayment\Console\Commands\InstallPOSPayment;
 
 class POSPaymentServiceProvider extends ServiceProvider
 {
@@ -14,15 +13,10 @@ class POSPaymentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Merge configuration from the package into the application's config
+        // Merge the custom configuration into the application's config
         $this->mergeConfigFrom(
             __DIR__ . '/../Config/config.php', 'pospayment'
         );
-
-        // Register console commands
-        $this->commands([
-            InstallPOSPayment::class,
-        ]);
     }
 
     /**
@@ -32,13 +26,13 @@ class POSPaymentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Load routes from the package
+        // Load the routes for the payment processing
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
 
-        // Load views from the package
+        // Load the views for the payment method
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views', 'pospayment');
 
-        // Publish configuration files to allow the application to override them
+        // Publish the configuration to allow users to override it
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path('pospayment.php'),
         ], 'config');
