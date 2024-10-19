@@ -8,28 +8,24 @@ class POSPaymentServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        // Merge the custom configuration into the application's config
-        $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'bagistopospayment'
-        );
+        // Merge the custom config with the application config
+        $this->mergeConfigFrom(__DIR__ . '/../Config/config.php', 'bagistopospayment');
     }
 
     public function boot()
     {
-        // Load routes
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
-
-        // Load views
+        // Load routes and views
+        $this->loadRoutesFrom(__DIR__ . '/../../Routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views', 'bagistopospayment');
 
-        // Publish configuration to allow users to override it
-        $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('bagistopospayment.php'),
-        ], 'config');
-
-        // Publish system config for admin visibility
+        // Publish system.php for admin visibility
         $this->publishes([
             __DIR__ . '/../Config/system.php' => config_path('system.php'),
+        ], 'config');
+
+        // Publish general config file
+        $this->publishes([
+            __DIR__ . '/../Config/config.php' => config_path('bagistopospayment.php'),
         ], 'config');
     }
 }
