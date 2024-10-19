@@ -1,9 +1,6 @@
-return [
-    'general' => [
-        'title' => 'POS Ödeme Yöntemi',
-        'description' => 'Tüm bankalar için POS ödeme entegrasyonu',
-    ],
+<?php
 
+return [
     'banks' => [
         'akbank' => [
             'name' => 'Akbank',
