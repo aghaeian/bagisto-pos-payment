@@ -19,10 +19,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "@php artisan pospayment:install"
+            "@php artisan bagisto-pos-payment:install"
         ],
         "post-update-cmd": [
-            "@php artisan pospayment:install"
+            "@php artisan bagisto-pos-payment:install"
         ]
     }
 }
