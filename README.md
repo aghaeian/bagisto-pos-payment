@@ -8,3 +8,7 @@ composer dump-autoload
 
 ### then
 php artisan package:discover
+
+### then
+php artisan optimize
+php artisan optimize:clear
