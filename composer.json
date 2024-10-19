@@ -20,10 +20,14 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "@php artisan bagisto-pos-payment:install"
+            "php artisan bagisto-pos-payment:install",
+            "composer dump-autoload",
+            "php artisan optimize:clear"
         ],
         "post-update-cmd": [
-            "@php artisan bagisto-pos-payment:install"
+            "php artisan bagisto-pos-payment:install",
+            "composer dump-autoload",
+            "php artisan optimize:clear"
         ]
     }
 }
