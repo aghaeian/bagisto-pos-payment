@@ -7,13 +7,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Aghaeian\\POSPayment\\": "src/"
+            "Aghaeian\\BagistoPosPayment\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Aghaeian\\POSPayment\\Providers\\POSPaymentServiceProvider"
+                "Aghaeian\\BagistoPosPayment\\Providers\\POSPaymentServiceProvider"
             ]
         }
     },
