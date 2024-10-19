@@ -5,8 +5,8 @@ return [
         'methods' => [
             'bagistopospayment' => [
                 'code' => 'bagistopospayment',
-                'title' => 'POS Payment Method',
-                'description' => 'Supports multiple Turkish banks',
+                'title' => 'POS Payment',
+                'description' => 'POS Payment Method supporting multiple Turkish banks',
                 'class' => 'Aghaeian\BagistoPosPayment\Payment\POSPayment',
                 'active' => true,
                 'sort' => 1,
