@@ -15,8 +15,8 @@ class POSPaymentServiceProvider extends ServiceProvider
     public function boot()
     {
         // Load routes and views
-        $this->loadRoutesFrom(__DIR__ . '/../../Routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/../../Resources/views', 'bagistopospayment');
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'bagistopospayment');
 
         // Publish system.php for admin visibility
         $this->publishes([
