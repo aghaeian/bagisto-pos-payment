@@ -1,4 +1,4 @@
-namespace Webkul\POSPayment\Console\Commands;
+namespace Aghaeian\POSPayment\Console\Commands;
 
 use Illuminate\Console\Command;
 use Brotzka\DotenvEditor\DotenvEditor;
