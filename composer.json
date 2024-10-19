@@ -3,8 +3,7 @@
     "description": "POS Ödeme Yöntemi - Tüm bankalar için destek",
     "type": "bagisto-package",
     "require": {
-        "php": "^8.1",
-        "bagisto/bagisto": "^2.0 || ^2.1 || ^2.2"
+        "php": "^8.1"
     },
     "autoload": {
         "psr-4": {
