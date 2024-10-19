@@ -1,7 +1,7 @@
-namespace Webkul\POSPayment\Providers;
+namespace Aghaeian\POSPayment\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Webkul\POSPayment\Console\Commands\InstallPOSPayment;
+use Aghaeian\POSPayment\Console\Commands\InstallPOSPayment;
 
 class POSPaymentServiceProvider extends ServiceProvider
 {
