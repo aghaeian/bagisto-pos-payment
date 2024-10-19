@@ -3,14 +3,13 @@
 return [
     'payment' => [
         'methods' => [
-            'pospayment' => [
-                'code' => 'pospayment',
+            'bagistopospayment' => [
+                'code' => 'bagistopospayment',
                 'title' => 'POS Payment Method',
                 'description' => 'Supports multiple Turkish banks',
-                'class' => 'Aghaeian\POSPayment\Payment\POSPayment',
+                'class' => 'Aghaeian\BagistoPosPayment\Payment\POSPayment',
                 'active' => true,
                 'sort' => 1,
-                'default' => false,
             ],
         ],
     ],
