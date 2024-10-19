@@ -1,6 +1,6 @@
 <?php
 
-namespace Aghaeian\POSPayment\Payment;
+namespace Aghaeian\BagistoPosPayment\Payment;
 
 use Webkul\Payment\Payment\Payment;
 
@@ -11,10 +11,10 @@ class POSPayment extends Payment
      *
      * @var string
      */
-    protected $code = 'pospayment';
+    protected $code = 'bagistopospayment';
 
     public function getRedirectUrl()
     {
-        return route('pospayment.process');
+        return route('bagistopospayment.process');
     }
 }
