@@ -12,14 +12,14 @@ class InstallPOSPayment extends Command
      *
      * @var string
      */
-    protected $signature = 'pospayment:install';
+    protected $signature = 'bagisto-pos-payment:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install and configure POS Payment method for Bagisto';
+    protected $description = 'Install and configure the Bagisto POS Payment method';
 
     /**
      * Execute the console command.
@@ -28,7 +28,7 @@ class InstallPOSPayment extends Command
      */
     public function handle()
     {
-        $this->info('Starting POS Payment installation...');
+        $this->info('Starting Bagisto POS Payment installation...');
 
         // Initialize dotenv editor to set environment variables
         $env = new DotenvEditor;
@@ -45,7 +45,7 @@ class InstallPOSPayment extends Command
 
         $env->save(); // Save all collected environment variables to the .env file
 
-        $this->info('POS Payment method installed successfully.');
+        $this->info('Bagisto POS Payment method installed successfully.');
     }
 
     /**
