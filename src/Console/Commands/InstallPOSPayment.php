@@ -1,6 +1,6 @@
 <?php
 
-namespace Aghaeian\POSPayment\Console\Commands;
+namespace Aghaeian\BagistoPosPayment\Console\Commands;
 
 use Illuminate\Console\Command;
 use Brotzka\DotenvEditor\DotenvEditor;
@@ -19,7 +19,7 @@ class InstallPOSPayment extends Command
      *
      * @var string
      */
-    protected $description = 'POS ödeme paketi için gerekli ayarları yapılandırma';
+    protected $description = 'Install and configure POS Payment method for Bagisto';
 
     /**
      * Execute the console command.
@@ -28,20 +28,40 @@ class InstallPOSPayment extends Command
      */
     public function handle()
     {
-        $this->info('POS Ödeme Yöntemi kuruluyor...');
+        $this->info('Starting POS Payment installation...');
 
+        // Initialize dotenv editor to set environment variables
         $env = new DotenvEditor;
 
-        // Ask for the merchant IDs and secret keys for each bank
-        $akbankMerchantId = $this->ask('Akbank Merchant ID');
-        $akbankSecretKey = $this->ask('Akbank Secret Key');
-        
-        $env->setKey('AKBANK_MERCHANT_ID', $akbankMerchantId);
-        $env->setKey('AKBANK_SECRET_KEY', $akbankSecretKey);
+        // Collect bank credentials for each bank
+        $this->setEnvVariable($env, 'AKBANK', 'Akbank');
+        $this->setEnvVariable($env, 'GARANTI', 'Garanti BBVA');
+        $this->setEnvVariable($env, 'ISBANK', 'Türkiye İş Bankası');
+        $this->setEnvVariable($env, 'ZIRAAT', 'Ziraat Bankası');
+        $this->setEnvVariable($env, 'VAKIFBANK', 'VakıfBank');
+        $this->setEnvVariable($env, 'YAPIKREDI', 'Yapı Kredi');
+        $this->setEnvVariable($env, 'FINANSBANK', 'QNB Finansbank');
+        $this->setEnvVariable($env, 'HALKBANK', 'Halkbank');
 
-        // You can add more banks here as needed
-        $env->save();
+        $env->save(); // Save all collected environment variables to the .env file
 
-        $this->info('POS Ödeme Yöntemi başarıyla kuruldu.');
+        $this->info('POS Payment method installed successfully.');
+    }
+
+    /**
+     * Collects and sets the environment variables for a given bank.
+     *
+     * @param DotenvEditor $env
+     * @param string $bankCode
+     * @param string $bankName
+     * @return void
+     */
+    private function setEnvVariable(DotenvEditor $env, $bankCode, $bankName)
+    {
+        $merchantId = $this->ask("Enter the Merchant ID for $bankName");
+        $secretKey = $this->ask("Enter the Secret Key for $bankName");
+
+        $env->setKey("{$bankCode}_MERCHANT_ID", $merchantId);
+        $env->setKey("{$bankCode}_SECRET_KEY", $secretKey);
     }
 }
